@@ -17,3 +17,22 @@ main {
   margin: 0 auto;
   padding: 2rem 1rem;
 }
+
+.kanbanContainer {
+  display: flex;
+}
+
+.todoContainer {
+  padding: 10px 10px;
+  background-color: rgb(246, 160, 160);
+}
+
+.inProgressContainer {
+  padding: 10px 10px;
+  background-color: rgb(247, 247, 180);
+}
+
+.doneContainer {
+  padding: 10px 10px;
+  background-color: rgb(167, 244, 167);
+}
