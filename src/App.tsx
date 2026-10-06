@@ -31,24 +31,24 @@ function App() {
     }
   };
 
-  const card = (task: Task) => {
+  const Card = ({ task: Task }: CardProps) => {
     return (
-      <div key={task.id}>
-        <h1>{task.title}</h1>
-        <p>{task.status}</p>
+      <div key={Task.id}>
+        <h1>{Task.title}</h1>
+        <p>{Task.status}</p>
         <div>
           <button
-            disabled={task.status === "todo"}
+            disabled={Task.status === STATUS[0]}
             onClick={() => {
-              onHandleLeft(task.id, task.status);
+              onHandleLeft(Task.id, Task.status);
             }}
           >
             Move left
           </button>
           <button
-            disabled={task.status === "done"}
+            disabled={Task.status === STATUS[STATUS.length - 1]}
             onClick={() => {
-              onHandleRight(task.id, task.status);
+              onHandleRight(Task.id, Task.status);
             }}
           >
             Move right
@@ -62,12 +62,15 @@ function App() {
     return (
       <div className={className}>
         <h1>{status}</h1>
-        {tasks.map((task) => (task.status === status ? card(task) : ""))}
+        {tasks
+          .filter((task) => task.status === status)
+          .map((task) => (
+            <Card task={task} />
+          ))}
       </div>
     );
   };
 
-  console.log("tasks", tasks);
   return (
     <main>
       <h1>React Mock Interview Practice</h1>
